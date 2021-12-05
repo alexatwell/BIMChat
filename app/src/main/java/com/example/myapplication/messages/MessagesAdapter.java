@@ -10,7 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.google.firebase.database.core.Context;
+//import com.google.firebase.database.core.Context;
+import android.content.Context;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,7 +37,21 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MessagesAdapter.MyViewHolder holder, int position) {
+        MessagesList list2 = messagesLists.get(position);
 
+        if (list2.getProfilePic().isEmpty()){
+            Picasso.get().load(list2.getProfilePic()).into(holder.profilePic);
+        }
+
+        holder.name.setText(list2.getName());
+        holder.lastMessage.setText(list2.getLastMessage());
+
+        if (list2.getUnseenMessages() == 0) {
+            holder.unseenMessages.setVisibility(View.GONE);
+        } else {
+            holder.unseenMessages.setVisibility(View.VISIBLE);
+
+        }
     }
 
     @Override

@@ -20,7 +20,7 @@
             android:layout_marginTop="40dp"
             android:layout_centerVertical="true"
             android:src="@drawable/search_icon"
-            android:background=""
+            android:background="@color/tb_color"
             android:padding="6dp"/>
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/user_icon"
-            android:background=""/>
+            android:background="@color/tb_color"/>
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
