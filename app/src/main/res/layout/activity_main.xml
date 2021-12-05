@@ -43,7 +43,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/user_icon"
-            android:background=""/>
+            android:background="@color/tb_color"/>
     </RelativeLayout>
 
 
@@ -65,8 +65,6 @@
             android:layout_marginBottom="25dp"
             android:layout_marginEnd="25dp"
             app:srcCompat="@android:drawable/ic_input_add" />
-
-
     </RelativeLayout>
 
 </LinearLayout>

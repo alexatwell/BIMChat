@@ -44,7 +44,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
         if (list2.getProfilePic().isEmpty()){
            // picasso.get().load(list2.getProfilePic()).into(holder.profilePic); // THIS IS WHERE THE ERROR IS
-            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         }
 
         holder.name.setText(list2.getName());

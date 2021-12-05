@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private String name;
     private RecyclerView messagesRecyclerView;
     private String contact_name;
+    private String contact_num;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://chatapp2021-2822d-default-rtdb.firebaseio.com/");
 
     @Override
@@ -52,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                startActivity(pickContact, PICK_CONTACT);
+                startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI),PICK_CONTACT);
             }
         });
 
         final CircleImageView userProfilePic = findViewById(R.id.userProfilePic);
+        userProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showContact();
+            }
+        });
         messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
 
         //get Intent data from Register.class activity
@@ -104,28 +111,41 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            Uri contactUri = data.getData();
-            // Specify which fields you want your query to return values for.
-            String[] queryFields = new String[]{
-                    ContactsContract.Contacts.DISPLAY_NAME
-            };
-            // Perform your query - the contactUri is like a "where" clause here
-            try (Cursor c = getContentResolver()
-                    .query(contactUri, queryFields, null, null, null)) {
-                // Double-check that you actually got results
-                if (c.getCount() == 0) {
-                    return;
+            if (requestCode == PICK_CONTACT && data != null) {
+                Uri contactUri = data.getData();
+                // Specify which fields you want your query to return
+                // values for.
+                String[] queryFields = new String[]{
+                        ContactsContract.Contacts.DISPLAY_NAME
+                };
+                // Perform your query - the contactUri is like a "where"
+                // clause here
+                Cursor c = getContentResolver()
+                        .query(contactUri, queryFields, null, null, null);
+                try {
+                    // Double-check that you actually got results
+                    if (c.getCount() == 0) {
+                        return;
+                    }
+                    // Pull out the first column of the first row of data -
+                    // that is your suspect's name.
+                    c.moveToFirst();
+                    contact_name = c.getString(0);
+                    contact_num = "8" + genNumber();
+                } finally {
+                    c.close();
                 }
-                // Pull out the first column of the first row of data -
-                // that is your suspect's name.
-                c.moveToFirst();
-                contact_name = c.getString(0);
-                Toast.makeText(MainActivity.this, contact_name, Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    public void openContact(){
-        startActivity
+    private int genNumber(){
+        return new Random().nextInt(899999) + 100000;
+    }
+
+    public void showContact(){
+        Toast.makeText(MainActivity.this, "Contact Name: " + contact_name +
+                        "\nMobile: " + contact_num,
+                Toast.LENGTH_SHORT).show();
     }
 }
