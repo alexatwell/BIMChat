@@ -25,7 +25,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     private final List<MessagesList> messagesLists;
     private final Context context;
-    private Picasso picasso = null;
 
     public MessagesAdapter(List<MessagesList> messagesLists, Context context) {
         this.messagesLists = messagesLists;
@@ -42,8 +41,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     public void onBindViewHolder(@NonNull MessagesAdapter.MyViewHolder holder, int position) {
         MessagesList list2 = messagesLists.get(position);
 
-        if (list2.getProfilePic().isEmpty()){
-           // picasso.get().load(list2.getProfilePic()).into(holder.profilePic); // THIS IS WHERE THE ERROR IS
+        if (!list2.getProfilePic().isEmpty()){
+           Picasso.get().load(list2.getProfilePic()).into(holder.profilePic); // THIS IS WHERE THE ERROR IS
             //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         }
 
