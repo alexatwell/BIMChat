@@ -61,6 +61,9 @@ public class Register extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.child("users").hasChild(mobileText)){
                             Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Register.this, Register.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             databaseReference.child("users").child(mobileText).child("email").setValue(emailText);
                             databaseReference.child("users").child(mobileText).child("name").setValue(nameText);

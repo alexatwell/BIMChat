@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        //progressDialog.show();
 
         // get profile pic from firebase database
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

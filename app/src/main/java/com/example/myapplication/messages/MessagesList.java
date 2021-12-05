@@ -14,6 +14,10 @@ public class MessagesList {
         this.unseenMessages = unseenMessages;
     }
 
+    public MessagesList() {
+
+    }
+
     public String getProfilePic() {
         return profilePic;
     }
