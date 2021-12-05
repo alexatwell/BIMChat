@@ -20,13 +20,13 @@
             android:layout_marginTop="40dp"
             android:layout_centerVertical="true"
             android:src="@drawable/search_icon"
-            android:background=""
             android:padding="6dp"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Messages"
+            android:text="@string/message_title"
             android:textColor="#424242"
             android:textStyle="bold"
             android:textSize="18sp"
@@ -36,18 +36,35 @@
             android:id="@+id/userProfilePic"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/user_icon"
-            android:background=""/>
+            android:src="@drawable/user_icon" />
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/messagesRecyclerView"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/messagesRecyclerView"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="25dp"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+
+    </RelativeLayout>
 
 </LinearLayout>

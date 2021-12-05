@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Bim Chat</string>
+    <string name="welcome_txt">Register Here</string>
+    <string name="name_txt">Name</string>
+    <string name="number_txt">Mobile Number</string>
+    <string name="email_txt">Email Address</string>
+    <string name="register_txt">Register Now</string>
+    <string name="message_title">Messages</string>
 </resources>
