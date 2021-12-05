@@ -14,6 +14,8 @@ import com.google.firebase.database.core.Context;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyViewHolder> {
 
     private final List<MessagesList> messagesLists;
@@ -42,7 +44,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView profilePic;
+        private CircleImageView profilePic;
         private TextView name;
         private TextView lastMessage;
         private TextView unseenMessages;
@@ -51,6 +53,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
             super(itemView);
 
             profilePic = itemView.findViewById(R.id.profilePic);
+            name = itemView.findViewById(R.id.name);
+            lastMessage =itemView.findViewById(R.id.lastMessage);
+            unseenMessages =itemView.findViewById(R.id.unseenMessages);
         }
     }
 }

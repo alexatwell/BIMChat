@@ -1,8 +1,8 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity {
 
-    DatabaseReference datsbaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://chatapp2021-2822d-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://chatapp2021-2822d-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,42 +30,64 @@ public class Register extends AppCompatActivity {
         final EditText email = findViewById(R.id.r_email);
         final AppCompatButton registerBtn = findViewById(R.id.r_registerBtn);
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String nameText = name.getText().toString();
-                final String mobileText = mobile.getText().toString();
-                final String emailText = email.getText().toString();
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
 
-                if (nameText.isEmpty() || mobileText.isEmpty() || emailText.isEmpty()){
-                    Toast.makeText(Register.this, "All fields Required!", Toast.LENGTH_SHORT).show();
-                } else {
-                    datsbaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.child("users").hasChild(mobileText)){
-                                Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
-                            } else {
-                                datsbaseReference.child("users").child(mobileText).child("email").setValue(emailText);
-                                datsbaseReference.child("users").child(nameText).child("name").setValue(nameText);
+        // check if user already logged in
+        if(!MemoryData.getData(this).isEmpty()){
+            Intent intent = new Intent(Register.this, MainActivity.class);
+            intent.putExtra("mobile", MemoryData.getData(this));
+            intent.putExtra("name", MemoryData.getName(this));
+            intent.putExtra("email", "");
+            startActivity(intent);
+            finish();
 
-                                Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
+        }
+        registerBtn.setOnClickListener(v -> {
 
-                                Intent intent = new Intent(Register.this, MainActivity.class);
-                                intent.putExtra("mobile", mobileText);
-                                intent.putExtra("name", nameText);
-                                intent.putExtra("email", emailText);
-                                startActivity(intent);
-                                finish();
-                            }
+            progressDialog.show();
+
+            final String nameText = name.getText().toString();
+            final String mobileText = mobile.getText().toString();
+            final String emailText = email.getText().toString();
+
+            if (nameText.isEmpty() || mobileText.isEmpty() || emailText.isEmpty()){
+                Toast.makeText(Register.this, "All fields Required!", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            } else {
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.child("users").hasChild(mobileText)){
+                            Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                        } else {
+                            databaseReference.child("users").child(mobileText).child("email").setValue(emailText);
+                            databaseReference.child("users").child(mobileText).child("name").setValue(nameText);
+                            databaseReference.child("users").child(mobileText).child("profile_pic").setValue("");
+
+                            // save data to memory
+                            MemoryData.saveData(mobileText, Register.this);
+
+                            // save name to memory
+                            MemoryData.saveName(nameText, Register.this);
+
+                            Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            intent.putExtra("mobile", mobileText);
+                            intent.putExtra("name", nameText);
+                            intent.putExtra("email", emailText);
+                            startActivity(intent);
+                            finish();
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        progressDialog.dismiss();
+                    }
+                });
             }
         });
     }
