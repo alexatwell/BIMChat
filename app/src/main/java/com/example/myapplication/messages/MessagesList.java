@@ -14,12 +14,12 @@ public class MessagesList {
         this.unseenMessages = unseenMessages;
     }
 
-    public String getProfilePic() {
-        return profilePic;
+    public MessagesList() {
+
     }
 
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
+    public String getProfilePic() {
+        return profilePic;
     }
 
     public String getName() {
@@ -34,23 +34,12 @@ public class MessagesList {
         return mobile;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
     public String getLastMessage() {
         return lastMessage;
-    }
-
-    public void setLastMessage(String lastMessage) {
-        this.lastMessage = lastMessage;
     }
 
     public int getUnseenMessages() {
         return unseenMessages;
     }
 
-    public void setUnseenMessages(int unseenMessages) {
-        this.unseenMessages = unseenMessages;
-    }
 }
