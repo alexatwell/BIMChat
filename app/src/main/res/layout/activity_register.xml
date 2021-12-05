@@ -8,10 +8,19 @@ android:orientation="vertical"
 android:background="@color/bg_color"
 tools:context=".Register">
 
+    <ImageView
+        android:src="@drawable/register"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="250dp"/>
+
     <TextView
         android:textColor="@color/txt_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:textAllCaps="true"
         android:gravity="center"
         android:textSize="20sp"
