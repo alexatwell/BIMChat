@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
 
         // check if user already logged in
-        if(!MemoryData.getData(this).isEmpty()){
+        if(!(MemoryData.getData(this).isEmpty())){
             Intent intent = new Intent(Register.this, MainActivity.class);
             intent.putExtra("mobile", MemoryData.getData(this));
             intent.putExtra("name", MemoryData.getName(this));

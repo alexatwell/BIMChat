@@ -10,8 +10,9 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/tb_color">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
@@ -38,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textSize="18sp"
-                    android:text="Fullname"
+                    android:text="@string/fullname"
+                    android:textColor="#424242"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -48,7 +50,7 @@
                     android:maxLines="1"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/theme_color_80"
+                    android:textColor="#424242"
                     android:textSize="14sp"
                     android:text="This is the last message"/>
 

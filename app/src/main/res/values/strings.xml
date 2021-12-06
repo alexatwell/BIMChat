@@ -6,4 +6,5 @@
     <string name="email_txt">Email Address</string>
     <string name="register_txt">Register Now</string>
     <string name="message_title">Messages</string>
+    <string name="fullname">Fullname</string>
 </resources>
