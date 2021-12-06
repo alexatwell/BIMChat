@@ -8,10 +8,40 @@ android:orientation="vertical"
 android:background="@color/bg_color"
 tools:context=".Register">
 
+    <Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bg_color"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:textColor="@color/txt_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="true"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Bim Chat"/>
+    </Toolbar>
+
+    <ImageView
+        android:src="@drawable/register"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="250dp"/>
+
     <TextView
         android:textColor="@color/txt_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:textAllCaps="true"
         android:gravity="center"
         android:textSize="20sp"
@@ -19,7 +49,7 @@ tools:context=".Register">
         android:text="@string/welcome_txt"/>
 
     <EditText
-        android:textColor="@color/txt_color"
+        android:textColor="@color/black"
         android:id="@+id/r_name"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
@@ -32,10 +62,11 @@ tools:context=".Register">
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:textColorHint="@color/txt_color"/>
 
     <EditText
-        android:textColor="@color/txt_color"
+        android:textColor="@color/black"
         android:id="@+id/r_mobile"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -48,7 +79,8 @@ tools:context=".Register">
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:textColorHint="@color/txt_color"/>
 
     <EditText
         android:textColor="@color/txt_color"
@@ -64,7 +96,8 @@ tools:context=".Register">
         android:maxLines="1"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:textColorHint="@color/txt_color"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/r_registerBtn"

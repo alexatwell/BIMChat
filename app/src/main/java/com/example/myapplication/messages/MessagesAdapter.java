@@ -29,7 +29,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     private List<MessagesList> messagesLists;
     private final Context context;
-    private Picasso picasso = null;
 
     public MessagesAdapter(List<MessagesList> messagesLists, Context context) {
         this.messagesLists = messagesLists;
@@ -46,8 +45,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
     public void onBindViewHolder(@NonNull MessagesAdapter.MyViewHolder holder, int position) {
         MessagesList list2 = messagesLists.get(position);
 
-        if (list2.getProfilePic().isEmpty()){
-           // picasso.get().load(list2.getProfilePic()).into(holder.profilePic); // THIS IS WHERE THE ERROR IS
+        if (!list2.getProfilePic().isEmpty()){
+           Picasso.get().load(list2.getProfilePic()).into(holder.profilePic); // THIS IS WHERE THE ERROR IS
             //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         }
 
@@ -72,7 +71,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 intent.putExtra("profile_pic",list2.getProfilePic());
                 intent.putExtra("chat_key",list2.getChatKey());
 
+                System.out.println("error 1");
                 context.startActivity(intent);
+                System.out.println("error 2");
             }
         });
     }
