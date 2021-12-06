@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.MemoryData;
 import com.example.myapplication.R;
@@ -34,7 +35,7 @@ public class Chat extends AppCompatActivity {
 
         final ImageView back_btn = findViewById(R.id.back_btn);
         final CircleImageView profilePic = findViewById(R.id.profilePic);
-        final TextView userName = findViewById(R.id.r_name);
+        final TextView userName = findViewById(R.id.name);
         final EditText messageEditText = findViewById(R.id.message_txt);
         final ImageView send_btn = findViewById(R.id.send_btn);
 
@@ -50,7 +51,7 @@ public class Chat extends AppCompatActivity {
         userName.setText(getName);
         Picasso.get().load(getProfilePic).into(profilePic);
 
-        if(chatKey.isEmpty()){
+       if(chatKey.isEmpty()){
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,6 +82,7 @@ public class Chat extends AppCompatActivity {
                 // get current time
                 final String currentTStamp = String.valueOf(System.currentTimeMillis()).substring(0,10);
                 final String getTextMsg = messageEditText.getText().toString();
+                messageEditText.setText("");
 
                 MemoryData.saveLastMsg(currentTStamp, chatKey, Chat.this);
 
