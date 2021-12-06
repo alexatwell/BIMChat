@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textSize="18sp"
-                    android:text="@string/fullname"
+                    android:text="@string/name_txt"
                     android:textColor="#424242"
                     android:textStyle="bold"/>
 
