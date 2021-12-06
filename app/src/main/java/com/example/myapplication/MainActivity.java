@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private String contact_name;
     private String contact_num;
     private int unseenMessages = 0;
+    private boolean dataSet = false;
     private String lastMessage = "";
     private MessagesAdapter messagesAdapter;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://chatapp2021-2822d-default-rtdb.firebaseio.com/");
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.child("users").getChildren()){
                     final String getMobile = dataSnapshot.getKey();
 
+                    dataSet = false;
+
                     if(!getMobile.isEmpty()){
                         final String getName = dataSnapshot.child("name").getValue(String.class);
                         final String getProfilePic = dataSnapshot.child("profile_pic").getValue(String.class);
@@ -112,30 +115,39 @@ public class MainActivity extends AppCompatActivity {
                                     for (DataSnapshot dataSnapshot1 : snapshot.getChildren()){
                                         final String getKey = dataSnapshot1.getKey();
                                         chatKey = getKey;
-                                        final String getUserOne = dataSnapshot1.child("user_1").getValue(String.class);
-                                        final String getUserTwo = dataSnapshot1.child("user_2").getValue(String.class);
 
-                                        if ((getUserOne.equals(getMobile) && getUserTwo.equals(mobile))
-                                                || (getUserOne.equals(mobile) && getUserTwo.equals(getMobile))){
-                                            for (DataSnapshot chatDataSnap : dataSnapshot1.child("messages").getChildren()){
-                                                final long getMsgKey = Long.parseLong(chatDataSnap.getKey());
-                                                final long getLastSeenMsg = Long.parseLong(MemoryData.getLastMsg(MainActivity.this,
-                                                        getKey));
-                                                // determine how many messages were unread
-                                                if(getMsgKey > getLastSeenMsg){
-                                                    lastMessage = chatDataSnap.child("msg").getValue(String.class);
-                                                    unseenMessages++;//msg why?
+                                        if(dataSnapshot1.hasChild("user_1") && dataSnapshot1.hasChild("user_2") &&
+                                                dataSnapshot1.hasChild("messages")){
+
+                                            final String getUserOne = dataSnapshot1.child("user_1").getValue(String.class);
+                                            final String getUserTwo = dataSnapshot1.child("user_2").getValue(String.class);
+
+                                            if ((getUserOne.equals(getMobile) && getUserTwo.equals(mobile))
+                                                    || (getUserOne.equals(mobile) && getUserTwo.equals(getMobile))){
+                                                for (DataSnapshot chatDataSnap : dataSnapshot1.child("messages").getChildren()){
+                                                    final long getMsgKey = Long.parseLong(chatDataSnap.getKey());
+                                                    final long getLastSeenMsg = Long.parseLong(MemoryData.getLastMsg(MainActivity.this,
+                                                            getKey));
+                                                    // determine how many messages were unread
+                                                    if(getMsgKey > getLastSeenMsg){
+                                                        lastMessage = chatDataSnap.child("msg").getValue(String.class);
+                                                        unseenMessages++;//msg why?
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
 
-                                MessagesList messagesList = new MessagesList(getName, getMobile, lastMessage,
-                                        getProfilePic, unseenMessages, chatKey);
-                                messagesLists.add(messagesList);
-                                messagesRecyclerView.setAdapter(new MessagesAdapter(messagesLists, MainActivity.this));
-                                messagesAdapter.updateData(messagesLists);
+                                if(!dataSet) {
+                                    dataSet = true;
+
+                                    MessagesList messagesList = new MessagesList(getName, getMobile, lastMessage,
+                                            getProfilePic, unseenMessages, chatKey);
+                                    messagesLists.add(messagesList);
+                                    messagesRecyclerView.setAdapter(new MessagesAdapter(messagesLists, MainActivity.this));
+                                    messagesAdapter.updateData(messagesLists);
+                                }
                             }
 
                             @Override
