@@ -3,19 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.14583333333333334" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.14583333333333334" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/drawable/round_back_light_10.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/drawable/u1_msg_bg.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/drawable/u2_msg_bg.xml" value="0.17685185185185184" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/layout/activity_chat.xml" value="0.2" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/layout/activity_main.xml" value="0.17" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Users/My Lenovo/Documents/SWEN 3001/NewChatApp/app/src/main/res/layout/chat_adapter_layout.xml" value="0.25" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/round_back_light_10.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/round_back_theme_1000.xml" value="0.1" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/round_back_white_10.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/round_theme.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/search_icon.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/send_icon.xml" value="0.14583333333333334" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_chat.xml" value="0.264" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.5873261205564142" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/message_adapter_layout.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/MyApplication/app/src/main/res/layout/messages_adapter_layout.xml" value="0.2" />
       </map>
     </option>
   </component>

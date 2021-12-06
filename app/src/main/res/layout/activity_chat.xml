@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat.Chat">
+    tools:context=".chat.Chat"
+    android:background="@color/white">
+
 
     <RelativeLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/theme_color_80">
+        android:layout_height="wrap_content">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/back_btn"
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -20,9 +22,7 @@
             android:paddingEnd="24dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/theme_color_80"
-            android:visibility="visible"/>
+            android:layout_marginTop="40dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilePic"
@@ -33,7 +33,7 @@
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@id/back_btn"
             android:src="@drawable/user_icon"
-            android:background="@color/theme_color_80" />
+            android:background="@color/tb_color" />
 
         <LinearLayout
             android:layout_marginStart="20dp"
@@ -63,7 +63,15 @@
         </LinearLayout>
     </RelativeLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/topBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/chattingRegion"
+        android:layout_above="@+id/bottomBar"/>
+
     <RelativeLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -77,8 +85,6 @@
             android:layout_height="50dp"
             android:backgroundTint="@android:color/transparent"
             android:textSize="14sp"
-            android:textColorHint="@color/txt_color"
-            android:textColor="@color/black"
             android:layout_marginEnd="10sp"
             android:layout_marginStart="20sp"
             android:hint="@string/send_txt"/>
@@ -89,8 +95,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:background="@color/theme_color_80"
-            android:src="@drawable/send_icon"/>
+            app:srcCompat="@android:drawable/ic_menu_send"/>
 
     </RelativeLayout>
 
