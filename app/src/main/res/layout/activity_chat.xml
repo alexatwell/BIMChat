@@ -11,9 +11,10 @@
     <RelativeLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="35dp"
             android:layout_height="35dp"
@@ -22,7 +23,9 @@
             android:paddingEnd="24dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            android:background="@color/theme_color_80"
+            android:visibility="visible"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilePic"
@@ -33,7 +36,7 @@
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@id/back_btn"
             android:src="@drawable/user_icon"
-            android:background="@color/tb_color" />
+            android:background="@color/theme_color_80" />
 
         <LinearLayout
             android:layout_marginStart="20dp"
@@ -85,6 +88,8 @@
             android:layout_height="50dp"
             android:backgroundTint="@android:color/transparent"
             android:textSize="14sp"
+            android:textColorHint="@color/txt_color"
+            android:textColor="@color/black"
             android:layout_marginEnd="10sp"
             android:layout_marginStart="20sp"
             android:hint="@string/send_txt"/>
@@ -95,7 +100,8 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            app:srcCompat="@android:drawable/ic_menu_send"/>
+            android:background="@color/theme_color_80"
+            android:src="@drawable/send_icon"/>
 
     </RelativeLayout>
 

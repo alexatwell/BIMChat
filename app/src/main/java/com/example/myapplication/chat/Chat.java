@@ -66,7 +66,7 @@ public class Chat extends AppCompatActivity {
         getUserMobile = MemoryData.getData(Chat.this);
 
         userName.setText(getName);
-        Picasso.get().load(getProfilePic).into(profilePic);
+        //Picasso.get().load(getProfilePic).into(profilePic);
 
         chattingRegion.setHasFixedSize(true);
         chattingRegion.setLayoutManager(new LinearLayoutManager(Chat.this));

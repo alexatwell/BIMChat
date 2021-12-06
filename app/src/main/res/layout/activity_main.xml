@@ -8,26 +8,6 @@
     android:background="@color/tb_color"
     tools:context=".MainActivity">
 
-    <Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/bg_color"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-        <TextView
-            android:textColor="@color/txt_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="true"
-            android:gravity="left"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Bim Chat"/>
-    </Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
