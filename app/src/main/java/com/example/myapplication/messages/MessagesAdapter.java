@@ -71,7 +71,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 intent.putExtra("profile_pic",list2.getProfilePic());
                 intent.putExtra("chat_key",list2.getChatKey());
 
+                System.out.println("error 1");
                 context.startActivity(intent);
+                System.out.println("error 2");
             }
         });
     }

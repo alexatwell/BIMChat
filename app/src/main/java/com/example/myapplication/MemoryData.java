@@ -14,7 +14,7 @@ public final class MemoryData {
 
     public static void saveData (String data, Context context){
         try {
-            FileOutputStream fileOutputStream = context.openFileOutput("nameee.txt", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = context.openFileOutput("datata.txt", Context.MODE_PRIVATE);
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
         } catch (IOException e) {

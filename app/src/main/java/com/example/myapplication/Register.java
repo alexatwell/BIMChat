@@ -34,16 +34,8 @@ public class Register extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
 
-        // check if user already logged in
-        if(!(MemoryData.getData(this).isEmpty())){
-            Intent intent = new Intent(Register.this, MainActivity.class);
-            intent.putExtra("mobile", MemoryData.getData(this));
-            intent.putExtra("name", MemoryData.getName(this));
-            intent.putExtra("email", "");
-            startActivity(intent);
-            finish();
+        checkLogged();
 
-        }
         registerBtn.setOnClickListener(v -> {
 
             progressDialog.show();
@@ -60,10 +52,14 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.child("users").hasChild(mobileText)){
-                            Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Register.this, Register.class);
-                            startActivity(intent);
-                            finish();
+                            if (!checkLogged()){
+                                Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(Register.this, Register.class);
+                                startActivity(intent);
+                                finish();
+                            }
                         } else {
                             databaseReference.child("users").child(mobileText).child("email").setValue(emailText);
                             databaseReference.child("users").child(mobileText).child("name").setValue(nameText);
@@ -93,6 +89,18 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
+    }
+    public boolean checkLogged() {
+        // check if user already logged in
+        if(!(MemoryData.getData(this).isEmpty())){
+            Intent intent = new Intent(Register.this, MainActivity.class);
+            intent.putExtra("mobile", MemoryData.getData(this));
+            intent.putExtra("name", MemoryData.getName(this));
+            intent.putExtra("email", "");
+            startActivity(intent);
+            finish();
+        }
+        return false;
     }
 
 }
