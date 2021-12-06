@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
                     dataSet = false;
 
-                    if(!getMobile.isEmpty()){
+                    if(!getMobile.equals(mobile)){
                         final String getName = dataSnapshot.child("name").getValue(String.class);
                         final String getProfilePic = dataSnapshot.child("profile_pic").getValue(String.class);
 
