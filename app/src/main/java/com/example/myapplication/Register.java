@@ -54,7 +54,7 @@ public class Register extends AppCompatActivity {
                         if(snapshot.child("users").hasChild(mobileText)){
                             if (!checkLogged()){
                                 Toast.makeText(Register.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Register.this, "Success", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(Register.this, Register.class);
                                 startActivity(intent);
